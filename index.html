@@ -124,6 +124,88 @@
           cursor: pointer;
         }
 
+/* Hero Section Full Viewport - Alinhado à Esquerda com Imagem e Cores Originais */
+#hero-full-viewport {
+    height: 100vh; /* Ocupa 100% da altura da viewport */
+    width: 100%; /* Ocupa 100% da largura */
+     background: linear-gradient(to right, rgba(30, 90, 190, 0.6), rgba(52, 211, 153, 0.4)); /* Cores ORIGINAIS do Hero (gradient) - Ajuste se precisar */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex; /* Ativa Flexbox para layout lado a lado (desktop) e responsividade */
+    justify-content: flex-start; /* Alinha o conteúdo à esquerda horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    color: var(--gray-dark); /* Cor do texto (cinza escuro ORIGINAL) */
+    position: relative;
+    padding: 2rem; /* Padding interno */
+}
+
+#hero-full-viewport::before {
+    /* Camada escura removida - não é mais necessária com as cores originais */
+    content: none; /* Remove a camada escura */
+}
+
+#hero-full-viewport .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    display: flex; /* Flex container para texto e imagem lado a lado */
+    align-items: center; /* Alinhamento vertical dos itens (texto e imagem) */
+    padding: 2rem;
+}
+
+#hero-full-viewport .hero-text {
+    flex: 1; /* O texto ocupa a maior parte do espaço disponível */
+    text-align: left; /* Alinha o texto à esquerda - como solicitado */
+    padding-right: 2rem; /* Espaço entre o texto e a imagem */
+}
+
+#hero-full-viewport h1 {
+    font-size: 3.5rem; /* Tamanho do título */
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    color: var(--gray-dark); /* Cor do título (cinza escuro ORIGINAL) */
+    text-shadow: none; /* Remove a sombra do texto, já que o fundo não é mais escuro */
+}
+
+#hero-full-viewport p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--gray-dark); /* Cor do parágrafo (cinza escuro ORIGINAL) */
+    text-shadow: none; /* Remove a sombra do texto */
+
+}
+
+#hero-full-viewport .hero-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--green-soft); /* Cor do botão (verde suave ORIGINAL) */
+    color: var(--blue-royal); /* Cor do texto do botão (azul royal ORIGINAL) */
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#hero-full-viewport .hero-button:hover {
+    background-color: #2cbb84;
+}
+
+
+#hero-full-viewport .hero-image {
+    flex: 1; /* A imagem também ocupa parte do espaço (ajuste conforme necessário) */
+    text-align: right; /* Alinha a imagem à direita no container dela */
+    padding-left: 12rem;
+}
+
+#hero-full-viewport .hero-image img {
+    max-width: 120%; /* Ajuste o tamanho máximo da imagem conforme necessário */
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /* Sombra suave na imagem */
+}
+
+
         /* Hero Section */
         #hero {
           position: relative;
@@ -165,29 +247,31 @@
     min-height: 600px; /* Exemplo de altura mínima para telas muito pequenas */
 }
 
-   /* Sobre Section - MODIFICADO PARA ADICIONAR MARGENS */
+   /* Sobre Section - MODIFICADO PARA AUMENTAR ESPAÇAMENTO VERTICAL */
         #sobre {
           background-color: var(--gray-light);
-          padding-top: 2rem;    /* Adicionado padding-top para espaço acima */
-          padding-bottom: 4rem; /* Adicionado padding-bottom para espaço abaixo */
-          padding-left: 4rem;   /* Adicionado padding-left para espaço à esquerda */
-          padding-right: 4rem;  /* Adicionado padding-right para espaço à direita */
-          margin-top: 2rem;     /* Adicionado margin-top para separar da seção anterior */
+          padding-top: 6rem;    /* Aumentado padding-top para MAIS espaço acima */
+          padding-bottom: 6rem; /* Aumentado padding-bottom para MAIS espaço abaixo */
+          padding-left: 2rem;
+          padding-right: 2rem;
+          margin-top: 2rem;
+          margin-bottom: 2rem; /* ADICIONADO margin-bottom para espaço abaixo da seção */
         }
 
         #sobre h2 {
           text-align: center;
-          margin-bottom: 2rem;
+          margin-bottom: 1.5rem;
           color: var(--gray-dark);
         }
 
         #sobre img {
           border-radius: 0.5rem;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
-          max-width: 75%;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          max-width: 100%;
           height: auto;
           object-fit: cover;
           object-position: center;
+          max-width: 200px; /*  Largura máxima em pixels para a FOTO DR. GUSTAVO - AJUSTE ESTE VALOR! */
         }
 
         #sobre p {
@@ -195,7 +279,7 @@
           color: var(--gray-dark);
           margin-bottom: 1rem;
         }
-    
+
         /* Atendimento Section */
         #atendimento {
           padding: 3rem 0; /* Ajustado */
@@ -432,6 +516,7 @@
           font-size: 0.9rem;
         }
 
+    /* Media Queries - Desktop (min-width: 768px) */
     @media (min-width: 768px) {
           .container {
             padding-left: 2rem;
@@ -499,7 +584,8 @@
               }
             }
         }
-    
+
+    /* Media Queries - Large Desktop (min-width: 1024px) */
         @media (min-width: 1024px) {
           #beneficios .grid {
             grid-template-columns: repeat(2, 1fr);
@@ -593,90 +679,9 @@
       max-height: 90vh; /* Altura máxima para scroll se necessário */
       overflow-y: auto; /* Adiciona scroll vertical se o conteúdo for muito longo */
     }
-    /* Hero Section Full Viewport - Alinhado à Esquerda com Imagem e Cores Originais */
-#hero-full-viewport {
-    height: 100vh; /* Ocupa 100% da altura da viewport */
-    width: 100%; /* Ocupa 100% da largura */
-     background: linear-gradient(to right, rgba(30, 90, 190, 0.6), rgba(52, 211, 153, 0.4)); /* Cores ORIGINAIS do Hero (gradient) - Ajuste se precisar */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex; /* Ativa Flexbox para layout lado a lado (desktop) e responsividade */
-    justify-content: flex-start; /* Alinha o conteúdo à esquerda horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    color: var(--gray-dark); /* Cor do texto (cinza escuro ORIGINAL) */
-    position: relative;
-    padding: 2rem; /* Padding interno */
-}
-
-#hero-full-viewport::before {
-    /* Camada escura removida - não é mais necessária com as cores originais */
-    content: none; /* Remove a camada escura */
-}
-
-#hero-full-viewport .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px; /* Largura máxima do conteúdo */
-    display: flex; /* Flex container para texto e imagem lado a lado */
-    align-items: center; /* Alinhamento vertical dos itens (texto e imagem) */
-    padding: 2rem;
-}
-
-#hero-full-viewport .hero-text {
-    flex: 1; /* O texto ocupa a maior parte do espaço disponível */
-    text-align: left; /* Alinha o texto à esquerda - como solicitado */
-    padding-right: 2rem; /* Espaço entre o texto e a imagem */
-  padding-left: 8rem;
-}
-
-#hero-full-viewport h1 {
-    font-size: 3.5rem; /* Tamanho do título */
-    margin-bottom: 1rem;
-    line-height: 1.3;
-    color: var(--gray-dark); /* Cor do título (cinza escuro ORIGINAL) */
-    text-shadow: none; /* Remove a sombra do texto, já que o fundo não é mais escuro */
-}
-
-#hero-full-viewport p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: var(--gray-dark); /* Cor do parágrafo (cinza escuro ORIGINAL) */
-    text-shadow: none; /* Remove a sombra do texto */
-  
-}
-
-#hero-full-viewport .hero-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: var(--green-soft); /* Cor do botão (verde suave ORIGINAL) */
-    color: var(--blue-royal); /* Cor do texto do botão (azul royal ORIGINAL) */
-    text-decoration: none;
-    border-radius: 0.5rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-#hero-full-viewport .hero-button:hover {
-    background-color: #2cbb84;
-}
 
 
-#hero-full-viewport .hero-image {
-    flex: 1; /* A imagem também ocupa parte do espaço (ajuste conforme necessário) */
-    text-align: right; /* Alinha a imagem à direita no container dela */
-  padding-left: 12rem;
-}
-
-#hero-full-viewport .hero-image img {
-    max-width: 120%; /* Ajuste o tamanho máximo da imagem conforme necessário */
-    height: auto;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /* Sombra suave na imagem */
-}
-
-
-/* Responsividade para telas menores */
+/* Media Queries - Mobile (max-width: 767px) - Ajustes para telas menores */
 @media (max-width: 767px) {
     #hero-full-viewport {
         text-align: center; /* Centraliza a seção em mobile */
@@ -703,8 +708,42 @@
     #hero-full-viewport p {
         font-size: 1rem; /* Parágrafo menor em mobile */
     }
+
+    /* Ajustes para outras seções em mobile (se necessário, adicione aqui) */
+    #sobre {
+          padding-top: 4rem;    /* Reduzindo padding vertical em mobile */
+          padding-bottom: 4rem; /* Reduzindo padding vertical em mobile */
+          padding-left: 1rem;   /* Reduzindo padding horizontal em mobile */
+          padding-right: 1rem;  /* Reduzindo padding horizontal em mobile */
+          margin-top: 1rem;     /* Reduzindo margin-top em mobile */
+          margin-bottom: 1rem;  /* Reduzindo margin-bottom em mobile */
+        }
+
+    #sobre h2 {
+          margin-bottom: 1rem; /* Reduzindo margin-bottom do h2 em mobile */
+        }
+    #sobre p {
+          font-size: 1rem;     /* Reduzindo tamanho da fonte do parágrafo em mobile */
+        }
+
+    #atendimento, #beneficios, #cannabis, #contato {
+          padding-top: 2rem;    /* Reduzindo padding vertical das seções em mobile */
+          padding-bottom: 2rem; /* Reduzindo padding vertical das seções em mobile */
+        }
+
+     #atendimento h2, #beneficios h2, #cannabis h2, #contato h2 {
+          font-size: 2rem;     /* Reduzindo tamanho da fonte dos títulos de seção em mobile */
+          margin-bottom: 1rem;  /* Reduzindo margin-bottom dos títulos de seção em mobile */
+        }
+
+     #beneficios li {
+          font-size: 1rem;      /* Reduzindo tamanho da fonte das listas de benefícios em mobile */
+        }
+
+    #cannabis .text-content p {
+          font-size: 0.9rem;   /* Reduzindo tamanho da fonte dos parágrafos da seção Cannabis em mobile */
+        }
 }
-    
   </style>
 </head>
 <body class="font-sans text-gray-800 px-4 md:px-8 lg:px-3">
