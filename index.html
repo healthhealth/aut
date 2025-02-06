@@ -485,14 +485,16 @@
           }
 
           #hero .container div:last-child img, /* Imagem da seção Hero - ADICIONADO */
-          #sobre .md\:flex > div:first-child img /* Foto do Dr. Gustavo na seção Sobre - ADICIONADO */
+          #sobre .md\:flex > div:first-child img
           {
-            max-width: 40%;
+            max-width: 30%; /* Reduzido para 30% (ainda menor) */
             height: auto;
             display: block;
             margin-left: auto;
             margin-right: auto;
           }
+
+           }
 
 
           #sobre .container {
@@ -607,6 +609,22 @@
           display: none;
         }
       }
+    /* Estilos para o Modal do Currículo */
+    .modal {
+      display: none; /* Inicialmente escondido */
+      z-index: 1000; /* Z-index alto para ficar sobre o conteúdo */
+    }
+
+    .modal.active {
+      display: flex; /* Mostra o modal quando a classe 'active' é adicionada */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-height: 90vh; /* Altura máxima para scroll se necessário */
+      overflow-y: auto; /* Adiciona scroll vertical se o conteúdo for muito longo */
+    }
   </style>
 </head>
 <body class="font-sans text-gray-800 px-4 md:px-8 lg:px-3">
@@ -652,20 +670,22 @@
       </div>
     </section>
 
-    <section id="sobre" class="py-16 md:py-24 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center w-full">Sobre o Dr. Gustavo Mendes</h2>  </div>
-    <div class="md:flex md:items-start">
+   <section id="sobre" class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center w-full">Sobre o Dr. Gustavo Mendes</h2>  </div>
+      <div class="md:flex md:items-start">
 
-        <div class="md:w-auto md:flex-shrink-0 md:mr-8 mb-8 md:mb-0 text-center">
-            <img src="foto.jpg" alt="Foto do Dr. Gustavo Mendes e Silva" class="rounded-lg w-full max-w-md mx-auto mb-4">
-            <div class="bg-white shadow-md p-4 rounded-lg inline-block">
-                <a href="https://portfolio.orcann.com" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">
+          <div class="md:w-auto md:flex-shrink-0 md:mr-8 mb-8 md:mb-0 text-center">
+              <img src="foto.jpg" alt="Foto do Dr. Gustavo Mendes e Silva" class="rounded-lg w-full max-w-md mx-auto mb-4">
+             <div class="bg-white p-4 rounded-lg inline-block">  <a href="#" id="curriculo-button" class="text-blue-600 hover:text-blue-800 font-medium">
                     <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 009-9H3a9 9 0 009 9zm0-9a9 9 0 01-9-9h18a9 9 0 01-9 9zM9 9a3 3 0 116 0 3 3 0 01-6 0z"></path></svg>
                     Ver Currículo Completo
                 </a>
             </div>
-        </div>
+          </div>
+
+          </div>
+    </section>
 
         <div class="md:w-auto md:flex-grow">
             <p class="text-lg text-gray-700 mb-4">O Dr. Gustavo Mendes e Silva é um psiquiatra com vasta experiência em autismo e neurodivergências. Sua abordagem é humanizada, focada na narrativa do paciente e com o compromisso de resultados.</p>
@@ -811,6 +831,19 @@
     </section>
   </main>
 
+  </main>
+
+  <div id="curriculo-modal" class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
+    <div class="modal-content bg-white rounded-lg p-8 max-w-2xl mx-auto mt-20 relative">
+      <button id="fechar-modal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 focus:outline-none">
+        <svg class="h-6 w-6 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+      </button>
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Currículo Completo - Dr. Gustavo Mendes e Silva</h2>
+      <iframe src="https://portfolio.orcann.com" width="100%" height="600px"></iframe> </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <footer class="bg-gray-100 py-8 mt-16">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
       <p class="text-gray-600 text-center md:text-left mb-4 md:mb-0">&copy; 2024 Dr. Gustavo Mendes. Todos os direitos reservados.</p>
@@ -823,7 +856,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
       const menuButton = document.getElementById('menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       const form = document.getElementById('contact-form');
@@ -835,6 +868,10 @@
       const nameError = document.getElementById('name-error');
       const whatsappError = document.getElementById('whatsapp-error');
       const regionError = document.getElementById('region-error');
+
+      const curriculoButton = document.querySelector('#sobre .bg-white a'); // Botão "Ver Currículo" (ajustado seletor)
+      const curriculoModal = document.getElementById('curriculo-modal');
+      const fecharModalButton = document.getElementById('fechar-modal');
 
 
       menuButton.addEventListener('click', () => {
@@ -853,6 +890,25 @@
           },
           pagination: { el: '.swiper-pagination', clickable: true, },
           navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
+      });
+
+
+      // Event listener para abrir o modal do currículo
+      curriculoButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Impede que o link abra em outra página
+        curriculoModal.classList.add('active'); // Mostra o modal
+      });
+
+      // Event listener para fechar o modal
+      fecharModalButton.addEventListener('click', function() {
+        curriculoModal.classList.remove('active'); // Esconde o modal
+      });
+
+      // Event listener para fechar o modal clicando fora dele (opcional)
+      window.addEventListener('click', function(event) {
+        if (event.target == curriculoModal) { // Se o clique foi fora do modal
+          curriculoModal.classList.remove('active'); // Esconde o modal
+        }
       });
 
 
@@ -947,6 +1003,6 @@
       });
 
     });
-  </script>
+    </script>
 </body>
 </html>
