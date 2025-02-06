@@ -417,7 +417,7 @@
           font-size: 0.9rem;
         }
 
-        @media (min-width: 768px) {
+       @media (min-width: 768px) {
           footer .container {
             flex-directionfooter .container {
             flex-direction: row;
@@ -484,6 +484,17 @@
             text-align: right;
           }
 
+          #hero .container div:last-child img, /* Imagem da seção Hero - ADICIONADO */
+          #sobre .md\:flex > div:first-child img /* Foto do Dr. Gustavo na seção Sobre - ADICIONADO */
+          {
+            max-width: 40%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+
           #sobre .container {
             display: flex;
             align-items: center;
@@ -520,7 +531,6 @@
               }
             }
         }
-
         @media (min-width: 1024px) {
           #beneficios .grid {
             grid-template-columns: repeat(2, 1fr);
