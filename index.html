@@ -417,7 +417,7 @@
           font-size: 0.9rem;
         }
 
-      @media (min-width: 768px) {
+    @media (min-width: 768px) {
           .container {
             padding-left: 2rem;
             padding-right: 2rem;
@@ -437,18 +437,10 @@
             text-align: right;
           }
 
-          #hero .container div:last-child img, /* Imagem da seção Hero - MODIFICADO */
-          /* REMOVIDO max-width PARA AUMENTAR/RESTAURAR O TAMANHO ORIGINAL */
-          /* max-width: 25%; */
-          height: auto;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-
-
-          #sobre .md\:flex > div:first-child img /* Foto do Dr. Gustavo na seção Sobre - MANTIDO REDUZIDO */
+          #hero .container div:last-child img, /* Imagem da seção Hero - USANDO PIXELS */
+          #sobre .md\:flex > div:first-child img /* Foto do Dr. Gustavo na seção Sobre - USANDO PIXELS */
           {
-            max-width: 25%; /* MANTIDO REDUZIDO PARA 25% */
+            max-width: 200px; /*  Largura máxima em pixels para a IMAGEM HERO e FOTO DR. GUSTAVO - AJUSTE ESTE VALOR! */
             height: auto;
             display: block;
             margin-left: auto;
@@ -492,6 +484,7 @@
               }
             }
         }
+    
         @media (min-width: 1024px) {
           #beneficios .grid {
             grid-template-columns: repeat(2, 1fr);
